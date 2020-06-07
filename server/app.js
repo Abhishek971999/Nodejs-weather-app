@@ -7,7 +7,7 @@ const unixToDateTime = require('./utils/unix');
 const app = express();
 const publicPath = path.join(__dirname, '../public');
 const partialPath = path.join(__dirname, '../public/partials');
-
+const port = process.env.PORT || 3000;
 app.set('view engine', 'hbs');
 app.set('views', publicPath);
 hbs.registerPartials(partialPath);
@@ -60,6 +60,6 @@ app.get('*', (req, res) => {
     message: 'Page Not Found',
   });
 });
-app.listen(3000, () => {
-  console.log('Server is listening on port 3000');
+app.listen(port, () => {
+  console.log(`Server is listening on port ${port}`);
 });
